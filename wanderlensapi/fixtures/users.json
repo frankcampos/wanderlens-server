@@ -1,0 +1,20 @@
+[
+  {
+    "model": "wanderlensapi.user",
+    "pk": 1,
+    "fields": {
+      "name": "travelbug",
+      "bio": "I love traveling!",
+      "uid": "gui22"
+    }
+  },
+  {
+    "model": "wanderlensapi.user",
+    "pk": 2,
+    "fields": {
+      "name": "worldtraveler",
+      "bio": "Traveling is my life",
+      "uid": "122xyz"
+    }
+  }
+]

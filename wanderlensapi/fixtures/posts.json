@@ -1,0 +1,42 @@
+[
+  {
+    "model": "wanderlensapi.post",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "title": "Traveling is my life",
+      "image_url": "https://i.imgur.com/7emlrdub.jpg",
+      "content": "My first post!"
+    }
+  },
+  {
+    "model": "wanderlensapi.post",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "title": "First time on a plane",
+      "image_url": "https://i.imgur.com/YVDAFMpb.jpg",
+      "content": "I love traveling"
+    }
+  },
+  {
+    "model": "wanderlensapi.post",
+    "pk": 3,
+    "fields": {
+      "user": 2,
+      "title": "Beach Vacation",
+      "image_url": "https://i.imgur.com/TzCJAU1b.jpg",
+      "content": "The water is crystal clear "
+    }
+  },
+  {
+    "model": "wanderlensapi.post",
+    "pk": 4,
+    "fields": {
+      "user": 2,
+      "title": "Mountains",
+      "image_url": "https://i.imgur.com/P9IVqkSb.jpg",
+      "content": "these mountain views are amazing"
+    }
+  }
+]

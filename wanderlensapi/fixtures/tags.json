@@ -1,0 +1,72 @@
+[
+  {
+      "model": "wanderlensapi.tag",
+    "pk": 1,
+    "fields": {
+      "label": "Family Fun"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 2,
+    "fields": {
+      "label": "Solo Travel"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 3,
+    "fields": {
+      "label": "Photo of the Day"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 4,
+    "fields": {
+      "label": "Backpacking"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 5,
+    "fields": {
+      "label": "Road Trip"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 6,
+    "fields": {
+      "label": "Air Travel"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 7,
+    "fields": {
+      "label": "Beach Fun"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 8,
+    "fields": {
+      "label": "Mountain Views"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 9,
+    "fields": {
+      "label": "Vibrant Colors"
+    }
+  },
+  {
+    "model": "wanderlensapi.tag",
+    "pk": 10,
+    "fields": {
+      "label": "Stunning Sunset"
+    }
+  }
+]
