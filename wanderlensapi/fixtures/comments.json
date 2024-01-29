@@ -1,0 +1,20 @@
+[
+  {
+    "model": "wanderlensapi.comment",
+    "pk": 1,
+    "fields": {
+      "post": 1,
+      "user": 2,
+      "content": "This looks incredible!"
+    }
+  },
+  {
+    "model": "wanderlensapi.comment",
+    "pk": 2,
+    "fields": {
+      "post": 3,
+      "user": 1,
+      "content": "Wow this photo is perfect!"
+    }
+  }
+]
