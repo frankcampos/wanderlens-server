@@ -17,7 +17,7 @@ class TagView(ViewSet):
             return Response(serializer.data)
         except Tag.DoesNotExist as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
-          
+
     def list(self, request):
         """Handle GET requests for every Order
 
