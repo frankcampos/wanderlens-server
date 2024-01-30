@@ -1,6 +1,6 @@
-from wanderlensapi.models import User
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from wanderlensapi.models import User
 
 @api_view(['POST'])
 def register_user(request):
