@@ -34,10 +34,14 @@ class PostView(ViewSet):
     post.title=request.data["title"]
     post.image_url=request.data["imageUrl"]
     post.content = request.data["content"]
-    
+  
     post.save()
     return Response(None, status=status.HTTP_200_OK)
-    
+  
+  def destroy(self, request, pk):
+    post = Post.objects.get(pk=pk)
+    post.delete()
+    return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class PostSerializer(serializers.ModelSerializer):
   class Meta:
