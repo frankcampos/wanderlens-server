@@ -16,7 +16,7 @@ class PostView(ViewSet):
     return Response(serializer.data, status=status.HTTP_200_OK)
   
   def create(self, request):
-    user = User.objects.get(pk=request.data["user"])
+    user = User.objects.get(pk=request.data["userId"])
     
     post = Post.objects.create(
       user = user,
