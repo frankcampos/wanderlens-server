@@ -28,6 +28,15 @@ class PostView(ViewSet):
     post.save()
     serializer = PostSerializer(post)
     return Response(serializer.data)
+  
+  def update(self, request, pk):
+    post = Post.objects.get(pk=pk)
+    post.title=request.data["title"]
+    post.image_url=request.data["imageUrl"]
+    post.content = request.data["content"]
+    
+    post.save()
+    return Response(None, status=status.HTTP_200_OK)
     
 
 class PostSerializer(serializers.ModelSerializer):
