@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework import serializers, status
 from rest_framework.response import Response
-from wanderlensapi.models import Post, User
+from wanderlensapi.models import Post, User, PostTag
 
 class PostView(ViewSet):
   def retrieve (self, request, pk):
@@ -43,8 +43,14 @@ class PostView(ViewSet):
     post.delete()
     return Response(None, status=status.HTTP_204_NO_CONTENT)
 
+class PostTagSerializer(serializers.ModelSerializer):
+  label = serializers.ReadOnlyField(source='tag.label')
+  class Meta:
+    model = PostTag
+    fields = ('id', 'label')
 class PostSerializer(serializers.ModelSerializer):
+  tags = PostTagSerializer(many=True, read_only=True)
   class Meta:
     model = Post
-    fields = ('id', 'user', 'title', 'image_url', 'content')
+    fields = ('id', 'user', 'title', 'image_url', 'content', 'comments', 'tags')
     depth = 1
