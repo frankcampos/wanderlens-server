@@ -2,7 +2,7 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from wanderlensapi.models import Comment
+from wanderlensapi.models import Comment, User, Post
 
 class CommentView(ViewSet):
   def retrieve(self, request, pk):
@@ -19,9 +19,13 @@ class CommentView(ViewSet):
     return Response(serializer.data)
   
   def create(self, request):
+      user = User.objects.get(pk=request.data["userId"])
+      post = Post.objects.get(pk=request.data["postId"])
 
       comment = Comment.objects.create(
-          content=request.data["content"],
+        user = user,
+        post = post,
+        content=request.data["content"],
       )
 
       serializer = CommentSerializer(comment)
