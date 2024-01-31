@@ -2,9 +2,34 @@ from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework import serializers, status
 from rest_framework.response import Response
-from wanderlensapi.models import Post, User, PostTag
+from rest_framework.decorators import action
+from wanderlensapi.models import Post, User, PostTag, Tag
 
 class PostView(ViewSet):
+  
+  
+  @action(methods=['post'], detail=True)
+  def add_tag_to_post(self, request, pk):
+      post = Post.objects.get(pk=pk)
+      tag = Tag.objects.get(id=request.data['tagId'])
+      post_tag = PostTag.objects.get(post=post, tag=tag)
+      if not post_tag :
+        PostTag.objects.create(
+            post=post,
+            tag=tag
+        )
+        return Response(None, status=status.HTTP_200_OK)
+      else:
+        return Response({'message: This post already has this tag.'})
+
+  @action(methods=['delete'], detail=True)
+  def remove_tag_from_post(self, request, pk):
+      post = Post.objects.get(pk=pk)
+      post_tag = PostTag.objects.get(post=post, tag=request.data['tagId'])
+      post_tag.delete()
+
+      return Response(None, status=status.HTTP_200_OK)
+  
   def retrieve (self, request, pk):
     post = Post.objects.get(pk=pk)
     serializer = PostSerializer(post)
@@ -44,6 +69,7 @@ class PostView(ViewSet):
     return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 class PostTagSerializer(serializers.ModelSerializer):
+  id = serializers.ReadOnlyField(source='tag.id')
   label = serializers.ReadOnlyField(source='tag.label')
   class Meta:
     model = PostTag
