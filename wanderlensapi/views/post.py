@@ -3,7 +3,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework import serializers, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
-from wanderlensapi.models import Post, User, PostTag, Tag
+from wanderlensapi.models import Post, User, PostTag, Tag, Comment
 
 class PostView(ViewSet):
   
@@ -74,8 +74,15 @@ class PostTagSerializer(serializers.ModelSerializer):
   class Meta:
     model = PostTag
     fields = ('id', 'label')
+    
+class PostCommentSerializer(serializers.ModelSerializer):
+  class Meta:
+    model= Comment
+    fields=('id','user','content')
+    depth = 1
 class PostSerializer(serializers.ModelSerializer):
   tags = PostTagSerializer(many=True, read_only=True)
+  comments = PostCommentSerializer(many=True, read_only=True)
   class Meta:
     model = Post
     fields = ('id', 'user', 'title', 'image_url', 'content', 'comments', 'tags')
