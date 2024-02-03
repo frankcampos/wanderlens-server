@@ -29,5 +29,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('register', register_user),
     path('checkuser', check_user),
+    path('posts/by-tag/', PostView.as_view({'get': 'filter_by_tag'}), name='post-list-by-tag'),
     path('', include(router.urls))
 ]

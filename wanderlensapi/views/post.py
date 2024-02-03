@@ -43,6 +43,16 @@ class PostView(ViewSet):
     serializer = PostSerializer(posts, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
   
+  @action(detail=False, methods=['get'])
+  def filter_by_tag(self, request):
+        tag_id = request.query_params.get('tag_id', None)
+        if not tag_id:
+            return Response({'message': 'Tag ID parameter is required'}, status=status.HTTP_400_BAD_REQUEST)
+
+        posts = Post.objects.filter(tags__tag__id=tag_id)
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+  
   
   def create(self, request):
     user = User.objects.get(pk=request.data["userId"])
