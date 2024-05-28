@@ -56,7 +56,8 @@ MIDDLEWARE = [
 ]
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',
-    'http://127.0.0.1:3000'
+    'http://127.0.0.1:3000',
+    'https://wanderlens-818588c3ccb6.herokuapp.com',
 )
 
 ROOT_URLCONF = 'wanderlens.urls'
