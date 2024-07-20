@@ -6,7 +6,9 @@ import django_on_heroku
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
+
 DEBUG = True
+
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
@@ -59,10 +61,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'wanderlens.wsgi.application'
 
-# Database
-DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
-}
+DATABASES = {}
+DATABASE_URL = os.environ.get('DATABASE_URL')
+
+if DATABASE_URL:
+    DATABASES['default'] = dj_database_url.config(default=DATABASE_URL, conn_max_age=600, ssl_require=True)
+else:
+    raise ImproperlyConfigured("DATABASE_URL environment variable not set")
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -80,8 +85,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 LANGUAGE_CODE = 'en-us'
+
 TIME_ZONE = 'UTC'
+
 USE_I18N = True
+
 USE_TZ = True
 
 STATIC_URL = 'static/'
